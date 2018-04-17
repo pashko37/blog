@@ -2120,3 +2120,877 @@ Processing by Admin::DashboardController#index as HTML
 Completed 200 OK in 138ms (Views: 133.4ms | ActiveRecord: 0.8ms)
 
 
+Started GET "/admin/users" for 127.0.0.1 at 2018-04-17 11:14:14 +0300
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Admin::UsersController#index as HTML
+Completed 401 Unauthorized in 11ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/admin/login" for 127.0.0.1 at 2018-04-17 11:14:14 +0300
+Processing by ActiveAdmin::Devise::SessionsController#new as HTML
+  Rendering /home/reacher/.rbenv/versions/2.5.0/lib/ruby/gems/2.5.0/gems/activeadmin-1.2.1/app/views/active_admin/devise/sessions/new.html.erb within layouts/active_admin_logged_out
+  Rendered /home/reacher/.rbenv/versions/2.5.0/lib/ruby/gems/2.5.0/gems/activeadmin-1.2.1/app/views/active_admin/devise/shared/_links.erb (2.2ms)
+  Rendered /home/reacher/.rbenv/versions/2.5.0/lib/ruby/gems/2.5.0/gems/activeadmin-1.2.1/app/views/active_admin/devise/sessions/new.html.erb within layouts/active_admin_logged_out (193.0ms)
+Completed 200 OK in 1319ms (Views: 1279.2ms | ActiveRecord: 1.1ms)
+
+
+Started POST "/admin/login" for 127.0.0.1 at 2018-04-17 11:14:21 +0300
+Processing by ActiveAdmin::Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"yGjTZOy3gyznxaiueEaXjfeMZTNRskNKQTYugcRC9Gn7v/taPGdL5ZHJSPg+WlxSkr2wi+CBzj8s20hyTKLDrQ==", "admin_user"=>{"email"=>"admin@example.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Login"}
+  [1m[36mAdminUser Load (0.6ms)[0m  [1m[34mSELECT  "admin_users".* FROM "admin_users" WHERE "admin_users"."email" = ? ORDER BY "admin_users"."id" ASC LIMIT ?[0m  [["email", "admin@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.2ms)[0m  [1m[33mUPDATE "admin_users" SET "current_sign_in_at" = ?, "last_sign_in_at" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "admin_users"."id" = ?[0m  [["current_sign_in_at", "2018-04-17 08:14:22.322180"], ["last_sign_in_at", "2018-04-16 10:47:21.002992"], ["sign_in_count", 3], ["updated_at", "2018-04-17 08:14:22.323184"], ["id", 1]]
+  [1m[35m (111.8ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/admin/users
+Completed 302 Found in 546ms (ActiveRecord: 113.7ms)
+
+
+Started GET "/admin/users" for 127.0.0.1 at 2018-04-17 11:14:22 +0300
+Processing by Admin::UsersController#index as HTML
+  [1m[36mAdminUser Load (0.3ms)[0m  [1m[34mSELECT  "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = ? ORDER BY "admin_users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering /home/reacher/.rbenv/versions/2.5.0/lib/ruby/gems/2.5.0/gems/activeadmin-1.2.1/app/views/active_admin/resource/index.html.arb
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM (SELECT  1 AS one FROM "users" LIMIT ? OFFSET ?) subquery_for_count[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  Rendered /home/reacher/.rbenv/versions/2.5.0/lib/ruby/gems/2.5.0/gems/activeadmin-1.2.1/app/views/active_admin/resource/index.html.arb (245.4ms)
+Completed 200 OK in 314ms (Views: 265.2ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/admin/dashboard" for 127.0.0.1 at 2018-04-17 11:14:25 +0300
+Processing by Admin::DashboardController#index as HTML
+  [1m[36mAdminUser Load (0.3ms)[0m  [1m[34mSELECT  "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = ? ORDER BY "admin_users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering /home/reacher/.rbenv/versions/2.5.0/lib/ruby/gems/2.5.0/gems/activeadmin-1.2.1/app/views/active_admin/page/index.html.arb
+  Rendered /home/reacher/.rbenv/versions/2.5.0/lib/ruby/gems/2.5.0/gems/activeadmin-1.2.1/app/views/active_admin/page/index.html.arb (129.7ms)
+Completed 200 OK in 166ms (Views: 163.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/admin/comments" for 127.0.0.1 at 2018-04-17 11:14:28 +0300
+Processing by Admin::CommentsController#index as HTML
+  [1m[36mAdminUser Load (0.3ms)[0m  [1m[34mSELECT  "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = ? ORDER BY "admin_users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering /home/reacher/.rbenv/versions/2.5.0/lib/ruby/gems/2.5.0/gems/activeadmin-1.2.1/app/views/active_admin/resource/index.html.arb
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "active_admin_comments" WHERE "active_admin_comments"."namespace" = ?[0m  [["namespace", "admin"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM (SELECT  1 AS one FROM "active_admin_comments" WHERE "active_admin_comments"."namespace" = ? LIMIT ? OFFSET ?) subquery_for_count[0m  [["namespace", "admin"], ["LIMIT", 30], ["OFFSET", 0]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT DISTINCT "active_admin_comments"."resource_type" FROM "active_admin_comments" ORDER BY resource_type asc[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT DISTINCT "active_admin_comments"."author_type" FROM "active_admin_comments" ORDER BY author_type asc[0m
+  Rendered /home/reacher/.rbenv/versions/2.5.0/lib/ruby/gems/2.5.0/gems/activeadmin-1.2.1/app/views/active_admin/resource/index.html.arb (210.5ms)
+Completed 200 OK in 222ms (Views: 213.6ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/admin/logout" for 127.0.0.1 at 2018-04-17 11:14:30 +0300
+Processing by ActiveAdmin::Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"D9OuPL7qeZsnNVlprjEq7+rSNXsL+SVrDwSDohTit5fZvGH39g4WlIiT99RzWqBWVASEC2TyO/Eu4v5cXv0NLQ=="}
+  [1m[36mAdminUser Load (0.4ms)[0m  [1m[34mSELECT  "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = ? ORDER BY "admin_users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/admin
+Completed 302 Found in 58ms (ActiveRecord: 0.6ms)
+
+
+Started GET "/admin" for 127.0.0.1 at 2018-04-17 11:14:30 +0300
+Processing by Admin::DashboardController#index as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/admin/login" for 127.0.0.1 at 2018-04-17 11:14:30 +0300
+Processing by ActiveAdmin::Devise::SessionsController#new as HTML
+  Rendering /home/reacher/.rbenv/versions/2.5.0/lib/ruby/gems/2.5.0/gems/activeadmin-1.2.1/app/views/active_admin/devise/sessions/new.html.erb within layouts/active_admin_logged_out
+  Rendered /home/reacher/.rbenv/versions/2.5.0/lib/ruby/gems/2.5.0/gems/activeadmin-1.2.1/app/views/active_admin/devise/shared/_links.erb (1.8ms)
+  Rendered /home/reacher/.rbenv/versions/2.5.0/lib/ruby/gems/2.5.0/gems/activeadmin-1.2.1/app/views/active_admin/devise/sessions/new.html.erb within layouts/active_admin_logged_out (20.3ms)
+Completed 200 OK in 108ms (Views: 107.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-04-17 11:14:33 +0300
+  
+ActionController::RoutingError (uninitialized constant HomeController):
+  
+activesupport (5.1.6) lib/active_support/inflector/methods.rb:269:in `const_get'
+activesupport (5.1.6) lib/active_support/inflector/methods.rb:269:in `block in constantize'
+activesupport (5.1.6) lib/active_support/inflector/methods.rb:267:in `each'
+activesupport (5.1.6) lib/active_support/inflector/methods.rb:267:in `inject'
+activesupport (5.1.6) lib/active_support/inflector/methods.rb:267:in `constantize'
+actionpack (5.1.6) lib/action_dispatch/http/request.rb:85:in `controller_class_for'
+actionpack (5.1.6) lib/action_dispatch/http/request.rb:78:in `controller_class'
+actionpack (5.1.6) lib/action_dispatch/routing/route_set.rb:43:in `controller'
+actionpack (5.1.6) lib/action_dispatch/routing/route_set.rb:29:in `serve'
+actionpack (5.1.6) lib/action_dispatch/journey/router.rb:50:in `block in serve'
+actionpack (5.1.6) lib/action_dispatch/journey/router.rb:33:in `each'
+actionpack (5.1.6) lib/action_dispatch/journey/router.rb:33:in `serve'
+actionpack (5.1.6) lib/action_dispatch/routing/route_set.rb:844:in `call'
+warden (1.2.7) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.7) lib/warden/manager.rb:35:in `catch'
+warden (1.2.7) lib/warden/manager.rb:35:in `call'
+rack (2.0.4) lib/rack/etag.rb:25:in `call'
+rack (2.0.4) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.4) lib/rack/head.rb:12:in `call'
+rack (2.0.4) lib/rack/session/abstract/id.rb:232:in `context'
+rack (2.0.4) lib/rack/session/abstract/id.rb:226:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/cookies.rb:613:in `call'
+activerecord (5.1.6) lib/active_record/migration.rb:556:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
+activesupport (5.1.6) lib/active_support/callbacks.rb:97:in `run_callbacks'
+actionpack (5.1.6) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
+web-console (3.6.0) lib/web_console/middleware.rb:137:in `call_app'
+web-console (3.6.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.6.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.6.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.6) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.6) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.6) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.4) lib/rack/method_override.rb:22:in `call'
+rack (2.0.4) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.6) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.4) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.6) lib/rails/engine.rb:522:in `call'
+puma (3.11.4) lib/puma/configuration.rb:225:in `call'
+puma (3.11.4) lib/puma/server.rb:632:in `handle_request'
+puma (3.11.4) lib/puma/server.rb:446:in `process_client'
+puma (3.11.4) lib/puma/server.rb:306:in `block in run'
+puma (3.11.4) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/admin/users" for 127.0.0.1 at 2018-04-17 11:25:58 +0300
+Processing by Admin::UsersController#index as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/admin/login" for 127.0.0.1 at 2018-04-17 11:25:58 +0300
+Processing by ActiveAdmin::Devise::SessionsController#new as HTML
+  Rendering /home/reacher/.rbenv/versions/2.5.0/lib/ruby/gems/2.5.0/gems/activeadmin-1.2.1/app/views/active_admin/devise/sessions/new.html.erb within layouts/active_admin_logged_out
+  Rendered /home/reacher/.rbenv/versions/2.5.0/lib/ruby/gems/2.5.0/gems/activeadmin-1.2.1/app/views/active_admin/devise/shared/_links.erb (2.9ms)
+  Rendered /home/reacher/.rbenv/versions/2.5.0/lib/ruby/gems/2.5.0/gems/activeadmin-1.2.1/app/views/active_admin/devise/sessions/new.html.erb within layouts/active_admin_logged_out (28.7ms)
+Completed 200 OK in 136ms (Views: 134.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/admin/login" for 127.0.0.1 at 2018-04-17 11:26:05 +0300
+Processing by ActiveAdmin::Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"QfO9GQxl7+MffZKbdHisyniI3wtc+G92ofckZ1vPO+tvPOxt8QCLaLmUE9Q6Rrm2CIP0vewLxPrJYWYpVu2Raw==", "admin_user"=>{"email"=>"admin@example.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Login"}
+  [1m[36mAdminUser Load (0.6ms)[0m  [1m[34mSELECT  "admin_users".* FROM "admin_users" WHERE "admin_users"."email" = ? ORDER BY "admin_users"."id" ASC LIMIT ?[0m  [["email", "admin@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[33mUPDATE "admin_users" SET "current_sign_in_at" = ?, "last_sign_in_at" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "admin_users"."id" = ?[0m  [["current_sign_in_at", "2018-04-17 08:26:05.471592"], ["last_sign_in_at", "2018-04-17 08:14:22.322180"], ["sign_in_count", 4], ["updated_at", "2018-04-17 08:26:05.472378"], ["id", 1]]
+  [1m[35m (106.2ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/admin/users
+Completed 302 Found in 295ms (ActiveRecord: 107.6ms)
+
+
+Started GET "/admin/users" for 127.0.0.1 at 2018-04-17 11:26:05 +0300
+Processing by Admin::UsersController#index as HTML
+  [1m[36mAdminUser Load (0.3ms)[0m  [1m[34mSELECT  "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = ? ORDER BY "admin_users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering /home/reacher/.rbenv/versions/2.5.0/lib/ruby/gems/2.5.0/gems/activeadmin-1.2.1/app/views/active_admin/resource/index.html.arb
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM (SELECT  1 AS one FROM "users" LIMIT ? OFFSET ?) subquery_for_count[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  Rendered /home/reacher/.rbenv/versions/2.5.0/lib/ruby/gems/2.5.0/gems/activeadmin-1.2.1/app/views/active_admin/resource/index.html.arb (142.1ms)
+Completed 200 OK in 148ms (Views: 144.9ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/admin/users/new" for 127.0.0.1 at 2018-04-17 11:26:08 +0300
+Processing by Admin::UsersController#new as HTML
+  [1m[36mAdminUser Load (0.3ms)[0m  [1m[34mSELECT  "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = ? ORDER BY "admin_users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering /home/reacher/.rbenv/versions/2.5.0/lib/ruby/gems/2.5.0/gems/activeadmin-1.2.1/app/views/active_admin/resource/new.html.arb
+  Rendered /home/reacher/.rbenv/versions/2.5.0/lib/ruby/gems/2.5.0/gems/activeadmin-1.2.1/app/views/active_admin/resource/new.html.arb (144.1ms)
+Completed 200 OK in 214ms (Views: 207.2ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/admin/users" for 127.0.0.1 at 2018-04-17 11:26:19 +0300
+Processing by Admin::UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"wWqvLcHmcpHEP7ljH859Hg8lffeWyrYJKMzW4engerfhZblRBdxiho0MgU1xYwp9dAGYq7wJ2ZofQRWDlT6mXg==", "user"=>{"first_name"=>"First", "last_name"=>"Second", "role"=>"thrith"}, "commit"=>"Create User"}
+  [1m[36mAdminUser Load (0.7ms)[0m  [1m[34mSELECT  "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = ? ORDER BY "admin_users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+Completed 500 Internal Server Error in 21ms (ActiveRecord: 1.0ms)
+
+
+  
+NoMethodError (undefined method `email' for #<User:0x00007fd25271e518>):
+  
+activemodel (5.1.6) lib/active_model/attribute_methods.rb:432:in `method_missing'
+activemodel (5.1.6) lib/active_model/validator.rb:148:in `block in validate'
+activemodel (5.1.6) lib/active_model/validator.rb:147:in `each'
+activemodel (5.1.6) lib/active_model/validator.rb:147:in `validate'
+activesupport (5.1.6) lib/active_support/callbacks.rb:413:in `block in make_lambda'
+activesupport (5.1.6) lib/active_support/callbacks.rb:178:in `block (2 levels) in halting_and_conditional'
+activesupport (5.1.6) lib/active_support/callbacks.rb:601:in `block (2 levels) in default_terminator'
+activesupport (5.1.6) lib/active_support/callbacks.rb:600:in `catch'
+activesupport (5.1.6) lib/active_support/callbacks.rb:600:in `block in default_terminator'
+activesupport (5.1.6) lib/active_support/callbacks.rb:179:in `block in halting_and_conditional'
+activesupport (5.1.6) lib/active_support/callbacks.rb:507:in `block in invoke_before'
+activesupport (5.1.6) lib/active_support/callbacks.rb:507:in `each'
+activesupport (5.1.6) lib/active_support/callbacks.rb:507:in `invoke_before'
+activesupport (5.1.6) lib/active_support/callbacks.rb:130:in `run_callbacks'
+activesupport (5.1.6) lib/active_support/callbacks.rb:827:in `_run_validate_callbacks'
+activemodel (5.1.6) lib/active_model/validations.rb:405:in `run_validations!'
+activemodel (5.1.6) lib/active_model/validations/callbacks.rb:114:in `block in run_validations!'
+activesupport (5.1.6) lib/active_support/callbacks.rb:131:in `run_callbacks'
+activesupport (5.1.6) lib/active_support/callbacks.rb:827:in `_run_validation_callbacks'
+activemodel (5.1.6) lib/active_model/validations/callbacks.rb:114:in `run_validations!'
+activemodel (5.1.6) lib/active_model/validations.rb:335:in `valid?'
+activerecord (5.1.6) lib/active_record/validations.rb:65:in `valid?'
+activerecord (5.1.6) lib/active_record/validations.rb:82:in `perform_validations'
+activerecord (5.1.6) lib/active_record/validations.rb:44:in `save'
+activerecord (5.1.6) lib/active_record/attribute_methods/dirty.rb:35:in `save'
+activerecord (5.1.6) lib/active_record/transactions.rb:308:in `block (2 levels) in save'
+activerecord (5.1.6) lib/active_record/transactions.rb:384:in `block in with_transaction_returning_status'
+activerecord (5.1.6) lib/active_record/connection_adapters/abstract/database_statements.rb:235:in `block in transaction'
+activerecord (5.1.6) lib/active_record/connection_adapters/abstract/transaction.rb:194:in `block in within_new_transaction'
+/home/reacher/.rbenv/versions/2.5.0/lib/ruby/2.5.0/monitor.rb:226:in `mon_synchronize'
+activerecord (5.1.6) lib/active_record/connection_adapters/abstract/transaction.rb:191:in `within_new_transaction'
+activerecord (5.1.6) lib/active_record/connection_adapters/abstract/database_statements.rb:235:in `transaction'
+activerecord (5.1.6) lib/active_record/transactions.rb:210:in `transaction'
+activerecord (5.1.6) lib/active_record/transactions.rb:381:in `with_transaction_returning_status'
+activerecord (5.1.6) lib/active_record/transactions.rb:308:in `block in save'
+activerecord (5.1.6) lib/active_record/transactions.rb:323:in `rollback_active_record_state!'
+activerecord (5.1.6) lib/active_record/transactions.rb:307:in `save'
+activerecord (5.1.6) lib/active_record/suppressor.rb:42:in `save'
+activeadmin (1.2.1) lib/active_admin/resource_controller/data_access.rb:155:in `block in save_resource'
+activesupport (5.1.6) lib/active_support/core_ext/object/try.rb:17:in `public_send'
+activesupport (5.1.6) lib/active_support/core_ext/object/try.rb:17:in `try!'
+activesupport (5.1.6) lib/active_support/core_ext/object/try.rb:6:in `try'
+activeadmin (1.2.1) lib/active_admin/callbacks.rb:79:in `block (2 levels) in define_active_admin_callbacks'
+activeadmin (1.2.1) lib/active_admin/resource_controller/data_access.rb:154:in `save_resource'
+activeadmin (1.2.1) lib/active_admin/resource_controller/data_access.rb:144:in `block in create_resource'
+activesupport (5.1.6) lib/active_support/core_ext/object/try.rb:17:in `public_send'
+activesupport (5.1.6) lib/active_support/core_ext/object/try.rb:17:in `try!'
+activesupport (5.1.6) lib/active_support/core_ext/object/try.rb:6:in `try'
+activeadmin (1.2.1) lib/active_admin/callbacks.rb:79:in `block (2 levels) in define_active_admin_callbacks'
+activeadmin (1.2.1) lib/active_admin/resource_controller/data_access.rb:143:in `create_resource'
+inherited_resources (1.8.0) lib/inherited_resources/actions.rb:33:in `create'
+actionpack (5.1.6) lib/action_controller/metal/basic_implicit_render.rb:4:in `send_action'
+actionpack (5.1.6) lib/abstract_controller/base.rb:186:in `process_action'
+actionpack (5.1.6) lib/action_controller/metal/rendering.rb:30:in `process_action'
+actionpack (5.1.6) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
+activesupport (5.1.6) lib/active_support/callbacks.rb:131:in `run_callbacks'
+actionpack (5.1.6) lib/abstract_controller/callbacks.rb:19:in `process_action'
+actionpack (5.1.6) lib/action_controller/metal/rescue.rb:20:in `process_action'
+actionpack (5.1.6) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+activesupport (5.1.6) lib/active_support/notifications.rb:166:in `block in instrument'
+activesupport (5.1.6) lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+activesupport (5.1.6) lib/active_support/notifications.rb:166:in `instrument'
+actionpack (5.1.6) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+actionpack (5.1.6) lib/action_controller/metal/params_wrapper.rb:252:in `process_action'
+activerecord (5.1.6) lib/active_record/railties/controller_runtime.rb:22:in `process_action'
+actionpack (5.1.6) lib/abstract_controller/base.rb:124:in `process'
+actionview (5.1.6) lib/action_view/rendering.rb:30:in `process'
+actionpack (5.1.6) lib/action_controller/metal.rb:189:in `dispatch'
+actionpack (5.1.6) lib/action_controller/metal.rb:253:in `dispatch'
+actionpack (5.1.6) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (5.1.6) lib/action_dispatch/routing/route_set.rb:31:in `serve'
+actionpack (5.1.6) lib/action_dispatch/journey/router.rb:50:in `block in serve'
+actionpack (5.1.6) lib/action_dispatch/journey/router.rb:33:in `each'
+actionpack (5.1.6) lib/action_dispatch/journey/router.rb:33:in `serve'
+actionpack (5.1.6) lib/action_dispatch/routing/route_set.rb:844:in `call'
+warden (1.2.7) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.7) lib/warden/manager.rb:35:in `catch'
+warden (1.2.7) lib/warden/manager.rb:35:in `call'
+rack (2.0.4) lib/rack/etag.rb:25:in `call'
+rack (2.0.4) lib/rack/conditional_get.rb:38:in `call'
+rack (2.0.4) lib/rack/head.rb:12:in `call'
+rack (2.0.4) lib/rack/session/abstract/id.rb:232:in `context'
+rack (2.0.4) lib/rack/session/abstract/id.rb:226:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/cookies.rb:613:in `call'
+activerecord (5.1.6) lib/active_record/migration.rb:556:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
+activesupport (5.1.6) lib/active_support/callbacks.rb:97:in `run_callbacks'
+actionpack (5.1.6) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
+web-console (3.6.0) lib/web_console/middleware.rb:137:in `call_app'
+web-console (3.6.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.6.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.6.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.6) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.6) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.6) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.4) lib/rack/method_override.rb:22:in `call'
+rack (2.0.4) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.6) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.4) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.6) lib/rails/engine.rb:522:in `call'
+puma (3.11.4) lib/puma/configuration.rb:225:in `call'
+puma (3.11.4) lib/puma/server.rb:632:in `handle_request'
+puma (3.11.4) lib/puma/server.rb:446:in `process_client'
+puma (3.11.4) lib/puma/server.rb:306:in `block in run'
+puma (3.11.4) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started POST "/admin/users" for 127.0.0.1 at 2018-04-17 11:28:46 +0300
+Processing by Admin::UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"wWqvLcHmcpHEP7ljH859Hg8lffeWyrYJKMzW4engerfhZblRBdxiho0MgU1xYwp9dAGYq7wJ2ZofQRWDlT6mXg==", "user"=>{"first_name"=>"First", "last_name"=>"Second", "role"=>"thrith"}, "commit"=>"Create User"}
+  [1m[36mAdminUser Load (0.5ms)[0m  [1m[34mSELECT  "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = ? ORDER BY "admin_users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[31mrollback transaction[0m
+Completed 500 Internal Server Error in 18ms (ActiveRecord: 1.0ms)
+
+
+  
+NoMethodError (undefined method `email' for #<User:0x00007fd23c076d20>):
+  
+activemodel (5.1.6) lib/active_model/attribute_methods.rb:432:in `method_missing'
+activemodel (5.1.6) lib/active_model/validator.rb:148:in `block in validate'
+activemodel (5.1.6) lib/active_model/validator.rb:147:in `each'
+activemodel (5.1.6) lib/active_model/validator.rb:147:in `validate'
+activesupport (5.1.6) lib/active_support/callbacks.rb:413:in `block in make_lambda'
+activesupport (5.1.6) lib/active_support/callbacks.rb:178:in `block (2 levels) in halting_and_conditional'
+activesupport (5.1.6) lib/active_support/callbacks.rb:601:in `block (2 levels) in default_terminator'
+activesupport (5.1.6) lib/active_support/callbacks.rb:600:in `catch'
+activesupport (5.1.6) lib/active_support/callbacks.rb:600:in `block in default_terminator'
+activesupport (5.1.6) lib/active_support/callbacks.rb:179:in `block in halting_and_conditional'
+activesupport (5.1.6) lib/active_support/callbacks.rb:507:in `block in invoke_before'
+activesupport (5.1.6) lib/active_support/callbacks.rb:507:in `each'
+activesupport (5.1.6) lib/active_support/callbacks.rb:507:in `invoke_before'
+activesupport (5.1.6) lib/active_support/callbacks.rb:130:in `run_callbacks'
+activesupport (5.1.6) lib/active_support/callbacks.rb:827:in `_run_validate_callbacks'
+activemodel (5.1.6) lib/active_model/validations.rb:405:in `run_validations!'
+activemodel (5.1.6) lib/active_model/validations/callbacks.rb:114:in `block in run_validations!'
+activesupport (5.1.6) lib/active_support/callbacks.rb:131:in `run_callbacks'
+activesupport (5.1.6) lib/active_support/callbacks.rb:827:in `_run_validation_callbacks'
+activemodel (5.1.6) lib/active_model/validations/callbacks.rb:114:in `run_validations!'
+activemodel (5.1.6) lib/active_model/validations.rb:335:in `valid?'
+activerecord (5.1.6) lib/active_record/validations.rb:65:in `valid?'
+activerecord (5.1.6) lib/active_record/validations.rb:82:in `perform_validations'
+activerecord (5.1.6) lib/active_record/validations.rb:44:in `save'
+activerecord (5.1.6) lib/active_record/attribute_methods/dirty.rb:35:in `save'
+activerecord (5.1.6) lib/active_record/transactions.rb:308:in `block (2 levels) in save'
+activerecord (5.1.6) lib/active_record/transactions.rb:384:in `block in with_transaction_returning_status'
+activerecord (5.1.6) lib/active_record/connection_adapters/abstract/database_statements.rb:235:in `block in transaction'
+activerecord (5.1.6) lib/active_record/connection_adapters/abstract/transaction.rb:194:in `block in within_new_transaction'
+/home/reacher/.rbenv/versions/2.5.0/lib/ruby/2.5.0/monitor.rb:226:in `mon_synchronize'
+activerecord (5.1.6) lib/active_record/connection_adapters/abstract/transaction.rb:191:in `within_new_transaction'
+activerecord (5.1.6) lib/active_record/connection_adapters/abstract/database_statements.rb:235:in `transaction'
+activerecord (5.1.6) lib/active_record/transactions.rb:210:in `transaction'
+activerecord (5.1.6) lib/active_record/transactions.rb:381:in `with_transaction_returning_status'
+activerecord (5.1.6) lib/active_record/transactions.rb:308:in `block in save'
+activerecord (5.1.6) lib/active_record/transactions.rb:323:in `rollback_active_record_state!'
+activerecord (5.1.6) lib/active_record/transactions.rb:307:in `save'
+activerecord (5.1.6) lib/active_record/suppressor.rb:42:in `save'
+activeadmin (1.2.1) lib/active_admin/resource_controller/data_access.rb:155:in `block in save_resource'
+activesupport (5.1.6) lib/active_support/core_ext/object/try.rb:17:in `public_send'
+activesupport (5.1.6) lib/active_support/core_ext/object/try.rb:17:in `try!'
+activesupport (5.1.6) lib/active_support/core_ext/object/try.rb:6:in `try'
+activeadmin (1.2.1) lib/active_admin/callbacks.rb:79:in `block (2 levels) in define_active_admin_callbacks'
+activeadmin (1.2.1) lib/active_admin/resource_controller/data_access.rb:154:in `save_resource'
+activeadmin (1.2.1) lib/active_admin/resource_controller/data_access.rb:144:in `block in create_resource'
+activesupport (5.1.6) lib/active_support/core_ext/object/try.rb:17:in `public_send'
+activesupport (5.1.6) lib/active_support/core_ext/object/try.rb:17:in `try!'
+activesupport (5.1.6) lib/active_support/core_ext/object/try.rb:6:in `try'
+activeadmin (1.2.1) lib/active_admin/callbacks.rb:79:in `block (2 levels) in define_active_admin_callbacks'
+activeadmin (1.2.1) lib/active_admin/resource_controller/data_access.rb:143:in `create_resource'
+inherited_resources (1.8.0) lib/inherited_resources/actions.rb:33:in `create'
+actionpack (5.1.6) lib/action_controller/metal/basic_implicit_render.rb:4:in `send_action'
+actionpack (5.1.6) lib/abstract_controller/base.rb:186:in `process_action'
+actionpack (5.1.6) lib/action_controller/metal/rendering.rb:30:in `process_action'
+actionpack (5.1.6) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
+activesupport (5.1.6) lib/active_support/callbacks.rb:131:in `run_callbacks'
+actionpack (5.1.6) lib/abstract_controller/callbacks.rb:19:in `process_action'
+actionpack (5.1.6) lib/action_controller/metal/rescue.rb:20:in `process_action'
+actionpack (5.1.6) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+activesupport (5.1.6) lib/active_support/notifications.rb:166:in `block in instrument'
+activesupport (5.1.6) lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+activesupport (5.1.6) lib/active_support/notifications.rb:166:in `instrument'
+actionpack (5.1.6) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+actionpack (5.1.6) lib/action_controller/metal/params_wrapper.rb:252:in `process_action'
+activerecord (5.1.6) lib/active_record/railties/controller_runtime.rb:22:in `process_action'
+actionpack (5.1.6) lib/abstract_controller/base.rb:124:in `process'
+actionview (5.1.6) lib/action_view/rendering.rb:30:in `process'
+actionpack (5.1.6) lib/action_controller/metal.rb:189:in `dispatch'
+actionpack (5.1.6) lib/action_controller/metal.rb:253:in `dispatch'
+actionpack (5.1.6) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (5.1.6) lib/action_dispatch/routing/route_set.rb:31:in `serve'
+actionpack (5.1.6) lib/action_dispatch/journey/router.rb:50:in `block in serve'
+actionpack (5.1.6) lib/action_dispatch/journey/router.rb:33:in `each'
+actionpack (5.1.6) lib/action_dispatch/journey/router.rb:33:in `serve'
+actionpack (5.1.6) lib/action_dispatch/routing/route_set.rb:844:in `call'
+warden (1.2.7) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.7) lib/warden/manager.rb:35:in `catch'
+warden (1.2.7) lib/warden/manager.rb:35:in `call'
+rack (2.0.4) lib/rack/etag.rb:25:in `call'
+rack (2.0.4) lib/rack/conditional_get.rb:38:in `call'
+rack (2.0.4) lib/rack/head.rb:12:in `call'
+rack (2.0.4) lib/rack/session/abstract/id.rb:232:in `context'
+rack (2.0.4) lib/rack/session/abstract/id.rb:226:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/cookies.rb:613:in `call'
+activerecord (5.1.6) lib/active_record/migration.rb:556:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
+activesupport (5.1.6) lib/active_support/callbacks.rb:97:in `run_callbacks'
+actionpack (5.1.6) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
+web-console (3.6.0) lib/web_console/middleware.rb:137:in `call_app'
+web-console (3.6.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.6.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.6.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.6) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.6) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.6) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.4) lib/rack/method_override.rb:22:in `call'
+rack (2.0.4) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.6) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.4) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.6) lib/rails/engine.rb:522:in `call'
+puma (3.11.4) lib/puma/configuration.rb:225:in `call'
+puma (3.11.4) lib/puma/server.rb:632:in `handle_request'
+puma (3.11.4) lib/puma/server.rb:446:in `process_client'
+puma (3.11.4) lib/puma/server.rb:306:in `block in run'
+puma (3.11.4) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started POST "/admin/users" for 127.0.0.1 at 2018-04-17 11:28:51 +0300
+Processing by Admin::UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"wWqvLcHmcpHEP7ljH859Hg8lffeWyrYJKMzW4engerfhZblRBdxiho0MgU1xYwp9dAGYq7wJ2ZofQRWDlT6mXg==", "user"=>{"first_name"=>"First", "last_name"=>"Second", "role"=>"thrith"}, "commit"=>"Create User"}
+  [1m[36mAdminUser Load (0.4ms)[0m  [1m[34mSELECT  "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = ? ORDER BY "admin_users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+Completed 500 Internal Server Error in 17ms (ActiveRecord: 0.8ms)
+
+
+  
+NoMethodError (undefined method `email' for #<User:0x00007fd250a06660>):
+  
+activemodel (5.1.6) lib/active_model/attribute_methods.rb:432:in `method_missing'
+activemodel (5.1.6) lib/active_model/validator.rb:148:in `block in validate'
+activemodel (5.1.6) lib/active_model/validator.rb:147:in `each'
+activemodel (5.1.6) lib/active_model/validator.rb:147:in `validate'
+activesupport (5.1.6) lib/active_support/callbacks.rb:413:in `block in make_lambda'
+activesupport (5.1.6) lib/active_support/callbacks.rb:178:in `block (2 levels) in halting_and_conditional'
+activesupport (5.1.6) lib/active_support/callbacks.rb:601:in `block (2 levels) in default_terminator'
+activesupport (5.1.6) lib/active_support/callbacks.rb:600:in `catch'
+activesupport (5.1.6) lib/active_support/callbacks.rb:600:in `block in default_terminator'
+activesupport (5.1.6) lib/active_support/callbacks.rb:179:in `block in halting_and_conditional'
+activesupport (5.1.6) lib/active_support/callbacks.rb:507:in `block in invoke_before'
+activesupport (5.1.6) lib/active_support/callbacks.rb:507:in `each'
+activesupport (5.1.6) lib/active_support/callbacks.rb:507:in `invoke_before'
+activesupport (5.1.6) lib/active_support/callbacks.rb:130:in `run_callbacks'
+activesupport (5.1.6) lib/active_support/callbacks.rb:827:in `_run_validate_callbacks'
+activemodel (5.1.6) lib/active_model/validations.rb:405:in `run_validations!'
+activemodel (5.1.6) lib/active_model/validations/callbacks.rb:114:in `block in run_validations!'
+activesupport (5.1.6) lib/active_support/callbacks.rb:131:in `run_callbacks'
+activesupport (5.1.6) lib/active_support/callbacks.rb:827:in `_run_validation_callbacks'
+activemodel (5.1.6) lib/active_model/validations/callbacks.rb:114:in `run_validations!'
+activemodel (5.1.6) lib/active_model/validations.rb:335:in `valid?'
+activerecord (5.1.6) lib/active_record/validations.rb:65:in `valid?'
+activerecord (5.1.6) lib/active_record/validations.rb:82:in `perform_validations'
+activerecord (5.1.6) lib/active_record/validations.rb:44:in `save'
+activerecord (5.1.6) lib/active_record/attribute_methods/dirty.rb:35:in `save'
+activerecord (5.1.6) lib/active_record/transactions.rb:308:in `block (2 levels) in save'
+activerecord (5.1.6) lib/active_record/transactions.rb:384:in `block in with_transaction_returning_status'
+activerecord (5.1.6) lib/active_record/connection_adapters/abstract/database_statements.rb:235:in `block in transaction'
+activerecord (5.1.6) lib/active_record/connection_adapters/abstract/transaction.rb:194:in `block in within_new_transaction'
+/home/reacher/.rbenv/versions/2.5.0/lib/ruby/2.5.0/monitor.rb:226:in `mon_synchronize'
+activerecord (5.1.6) lib/active_record/connection_adapters/abstract/transaction.rb:191:in `within_new_transaction'
+activerecord (5.1.6) lib/active_record/connection_adapters/abstract/database_statements.rb:235:in `transaction'
+activerecord (5.1.6) lib/active_record/transactions.rb:210:in `transaction'
+activerecord (5.1.6) lib/active_record/transactions.rb:381:in `with_transaction_returning_status'
+activerecord (5.1.6) lib/active_record/transactions.rb:308:in `block in save'
+activerecord (5.1.6) lib/active_record/transactions.rb:323:in `rollback_active_record_state!'
+activerecord (5.1.6) lib/active_record/transactions.rb:307:in `save'
+activerecord (5.1.6) lib/active_record/suppressor.rb:42:in `save'
+activeadmin (1.2.1) lib/active_admin/resource_controller/data_access.rb:155:in `block in save_resource'
+activesupport (5.1.6) lib/active_support/core_ext/object/try.rb:17:in `public_send'
+activesupport (5.1.6) lib/active_support/core_ext/object/try.rb:17:in `try!'
+activesupport (5.1.6) lib/active_support/core_ext/object/try.rb:6:in `try'
+activeadmin (1.2.1) lib/active_admin/callbacks.rb:79:in `block (2 levels) in define_active_admin_callbacks'
+activeadmin (1.2.1) lib/active_admin/resource_controller/data_access.rb:154:in `save_resource'
+activeadmin (1.2.1) lib/active_admin/resource_controller/data_access.rb:144:in `block in create_resource'
+activesupport (5.1.6) lib/active_support/core_ext/object/try.rb:17:in `public_send'
+activesupport (5.1.6) lib/active_support/core_ext/object/try.rb:17:in `try!'
+activesupport (5.1.6) lib/active_support/core_ext/object/try.rb:6:in `try'
+activeadmin (1.2.1) lib/active_admin/callbacks.rb:79:in `block (2 levels) in define_active_admin_callbacks'
+activeadmin (1.2.1) lib/active_admin/resource_controller/data_access.rb:143:in `create_resource'
+inherited_resources (1.8.0) lib/inherited_resources/actions.rb:33:in `create'
+actionpack (5.1.6) lib/action_controller/metal/basic_implicit_render.rb:4:in `send_action'
+actionpack (5.1.6) lib/abstract_controller/base.rb:186:in `process_action'
+actionpack (5.1.6) lib/action_controller/metal/rendering.rb:30:in `process_action'
+actionpack (5.1.6) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
+activesupport (5.1.6) lib/active_support/callbacks.rb:131:in `run_callbacks'
+actionpack (5.1.6) lib/abstract_controller/callbacks.rb:19:in `process_action'
+actionpack (5.1.6) lib/action_controller/metal/rescue.rb:20:in `process_action'
+actionpack (5.1.6) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+activesupport (5.1.6) lib/active_support/notifications.rb:166:in `block in instrument'
+activesupport (5.1.6) lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+activesupport (5.1.6) lib/active_support/notifications.rb:166:in `instrument'
+actionpack (5.1.6) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+actionpack (5.1.6) lib/action_controller/metal/params_wrapper.rb:252:in `process_action'
+activerecord (5.1.6) lib/active_record/railties/controller_runtime.rb:22:in `process_action'
+actionpack (5.1.6) lib/abstract_controller/base.rb:124:in `process'
+actionview (5.1.6) lib/action_view/rendering.rb:30:in `process'
+actionpack (5.1.6) lib/action_controller/metal.rb:189:in `dispatch'
+actionpack (5.1.6) lib/action_controller/metal.rb:253:in `dispatch'
+actionpack (5.1.6) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (5.1.6) lib/action_dispatch/routing/route_set.rb:31:in `serve'
+actionpack (5.1.6) lib/action_dispatch/journey/router.rb:50:in `block in serve'
+actionpack (5.1.6) lib/action_dispatch/journey/router.rb:33:in `each'
+actionpack (5.1.6) lib/action_dispatch/journey/router.rb:33:in `serve'
+actionpack (5.1.6) lib/action_dispatch/routing/route_set.rb:844:in `call'
+warden (1.2.7) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.7) lib/warden/manager.rb:35:in `catch'
+warden (1.2.7) lib/warden/manager.rb:35:in `call'
+rack (2.0.4) lib/rack/etag.rb:25:in `call'
+rack (2.0.4) lib/rack/conditional_get.rb:38:in `call'
+rack (2.0.4) lib/rack/head.rb:12:in `call'
+rack (2.0.4) lib/rack/session/abstract/id.rb:232:in `context'
+rack (2.0.4) lib/rack/session/abstract/id.rb:226:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/cookies.rb:613:in `call'
+activerecord (5.1.6) lib/active_record/migration.rb:556:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
+activesupport (5.1.6) lib/active_support/callbacks.rb:97:in `run_callbacks'
+actionpack (5.1.6) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
+web-console (3.6.0) lib/web_console/middleware.rb:137:in `call_app'
+web-console (3.6.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.6.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.6.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.6) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.6) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.6) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.4) lib/rack/method_override.rb:22:in `call'
+rack (2.0.4) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.6) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.4) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.6) lib/rails/engine.rb:522:in `call'
+puma (3.11.4) lib/puma/configuration.rb:225:in `call'
+puma (3.11.4) lib/puma/server.rb:632:in `handle_request'
+puma (3.11.4) lib/puma/server.rb:446:in `process_client'
+puma (3.11.4) lib/puma/server.rb:306:in `block in run'
+puma (3.11.4) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started POST "/admin/users" for 127.0.0.1 at 2018-04-17 11:29:53 +0300
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Admin::UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"wWqvLcHmcpHEP7ljH859Hg8lffeWyrYJKMzW4engerfhZblRBdxiho0MgU1xYwp9dAGYq7wJ2ZofQRWDlT6mXg==", "user"=>{"first_name"=>"First", "last_name"=>"Second", "role"=>"thrith"}, "commit"=>"Create User"}
+  [1m[36mAdminUser Load (0.3ms)[0m  [1m[34mSELECT  "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = ? ORDER BY "admin_users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+Completed 500 Internal Server Error in 84ms (ActiveRecord: 2.4ms)
+
+
+  
+NoMethodError (undefined method `email' for #<User:0x00007fcd442384f8>):
+  
+activemodel (5.1.6) lib/active_model/attribute_methods.rb:432:in `method_missing'
+activemodel (5.1.6) lib/active_model/validator.rb:148:in `block in validate'
+activemodel (5.1.6) lib/active_model/validator.rb:147:in `each'
+activemodel (5.1.6) lib/active_model/validator.rb:147:in `validate'
+activesupport (5.1.6) lib/active_support/callbacks.rb:413:in `block in make_lambda'
+activesupport (5.1.6) lib/active_support/callbacks.rb:178:in `block (2 levels) in halting_and_conditional'
+activesupport (5.1.6) lib/active_support/callbacks.rb:601:in `block (2 levels) in default_terminator'
+activesupport (5.1.6) lib/active_support/callbacks.rb:600:in `catch'
+activesupport (5.1.6) lib/active_support/callbacks.rb:600:in `block in default_terminator'
+activesupport (5.1.6) lib/active_support/callbacks.rb:179:in `block in halting_and_conditional'
+activesupport (5.1.6) lib/active_support/callbacks.rb:507:in `block in invoke_before'
+activesupport (5.1.6) lib/active_support/callbacks.rb:507:in `each'
+activesupport (5.1.6) lib/active_support/callbacks.rb:507:in `invoke_before'
+activesupport (5.1.6) lib/active_support/callbacks.rb:130:in `run_callbacks'
+activesupport (5.1.6) lib/active_support/callbacks.rb:827:in `_run_validate_callbacks'
+activemodel (5.1.6) lib/active_model/validations.rb:405:in `run_validations!'
+activemodel (5.1.6) lib/active_model/validations/callbacks.rb:114:in `block in run_validations!'
+activesupport (5.1.6) lib/active_support/callbacks.rb:131:in `run_callbacks'
+activesupport (5.1.6) lib/active_support/callbacks.rb:827:in `_run_validation_callbacks'
+activemodel (5.1.6) lib/active_model/validations/callbacks.rb:114:in `run_validations!'
+activemodel (5.1.6) lib/active_model/validations.rb:335:in `valid?'
+activerecord (5.1.6) lib/active_record/validations.rb:65:in `valid?'
+activerecord (5.1.6) lib/active_record/validations.rb:82:in `perform_validations'
+activerecord (5.1.6) lib/active_record/validations.rb:44:in `save'
+activerecord (5.1.6) lib/active_record/attribute_methods/dirty.rb:35:in `save'
+activerecord (5.1.6) lib/active_record/transactions.rb:308:in `block (2 levels) in save'
+activerecord (5.1.6) lib/active_record/transactions.rb:384:in `block in with_transaction_returning_status'
+activerecord (5.1.6) lib/active_record/connection_adapters/abstract/database_statements.rb:235:in `block in transaction'
+activerecord (5.1.6) lib/active_record/connection_adapters/abstract/transaction.rb:194:in `block in within_new_transaction'
+/home/reacher/.rbenv/versions/2.5.0/lib/ruby/2.5.0/monitor.rb:226:in `mon_synchronize'
+activerecord (5.1.6) lib/active_record/connection_adapters/abstract/transaction.rb:191:in `within_new_transaction'
+activerecord (5.1.6) lib/active_record/connection_adapters/abstract/database_statements.rb:235:in `transaction'
+activerecord (5.1.6) lib/active_record/transactions.rb:210:in `transaction'
+activerecord (5.1.6) lib/active_record/transactions.rb:381:in `with_transaction_returning_status'
+activerecord (5.1.6) lib/active_record/transactions.rb:308:in `block in save'
+activerecord (5.1.6) lib/active_record/transactions.rb:323:in `rollback_active_record_state!'
+activerecord (5.1.6) lib/active_record/transactions.rb:307:in `save'
+activerecord (5.1.6) lib/active_record/suppressor.rb:42:in `save'
+activeadmin (1.2.1) lib/active_admin/resource_controller/data_access.rb:155:in `block in save_resource'
+activesupport (5.1.6) lib/active_support/core_ext/object/try.rb:17:in `public_send'
+activesupport (5.1.6) lib/active_support/core_ext/object/try.rb:17:in `try!'
+activesupport (5.1.6) lib/active_support/core_ext/object/try.rb:6:in `try'
+activeadmin (1.2.1) lib/active_admin/callbacks.rb:79:in `block (2 levels) in define_active_admin_callbacks'
+activeadmin (1.2.1) lib/active_admin/resource_controller/data_access.rb:154:in `save_resource'
+activeadmin (1.2.1) lib/active_admin/resource_controller/data_access.rb:144:in `block in create_resource'
+activesupport (5.1.6) lib/active_support/core_ext/object/try.rb:17:in `public_send'
+activesupport (5.1.6) lib/active_support/core_ext/object/try.rb:17:in `try!'
+activesupport (5.1.6) lib/active_support/core_ext/object/try.rb:6:in `try'
+activeadmin (1.2.1) lib/active_admin/callbacks.rb:79:in `block (2 levels) in define_active_admin_callbacks'
+activeadmin (1.2.1) lib/active_admin/resource_controller/data_access.rb:143:in `create_resource'
+inherited_resources (1.8.0) lib/inherited_resources/actions.rb:33:in `create'
+actionpack (5.1.6) lib/action_controller/metal/basic_implicit_render.rb:4:in `send_action'
+actionpack (5.1.6) lib/abstract_controller/base.rb:186:in `process_action'
+actionpack (5.1.6) lib/action_controller/metal/rendering.rb:30:in `process_action'
+actionpack (5.1.6) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
+activesupport (5.1.6) lib/active_support/callbacks.rb:131:in `run_callbacks'
+actionpack (5.1.6) lib/abstract_controller/callbacks.rb:19:in `process_action'
+actionpack (5.1.6) lib/action_controller/metal/rescue.rb:20:in `process_action'
+actionpack (5.1.6) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+activesupport (5.1.6) lib/active_support/notifications.rb:166:in `block in instrument'
+activesupport (5.1.6) lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+activesupport (5.1.6) lib/active_support/notifications.rb:166:in `instrument'
+actionpack (5.1.6) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+actionpack (5.1.6) lib/action_controller/metal/params_wrapper.rb:252:in `process_action'
+activerecord (5.1.6) lib/active_record/railties/controller_runtime.rb:22:in `process_action'
+actionpack (5.1.6) lib/abstract_controller/base.rb:124:in `process'
+actionview (5.1.6) lib/action_view/rendering.rb:30:in `process'
+actionpack (5.1.6) lib/action_controller/metal.rb:189:in `dispatch'
+actionpack (5.1.6) lib/action_controller/metal.rb:253:in `dispatch'
+actionpack (5.1.6) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (5.1.6) lib/action_dispatch/routing/route_set.rb:31:in `serve'
+actionpack (5.1.6) lib/action_dispatch/journey/router.rb:50:in `block in serve'
+actionpack (5.1.6) lib/action_dispatch/journey/router.rb:33:in `each'
+actionpack (5.1.6) lib/action_dispatch/journey/router.rb:33:in `serve'
+actionpack (5.1.6) lib/action_dispatch/routing/route_set.rb:844:in `call'
+warden (1.2.7) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.7) lib/warden/manager.rb:35:in `catch'
+warden (1.2.7) lib/warden/manager.rb:35:in `call'
+rack (2.0.4) lib/rack/etag.rb:25:in `call'
+rack (2.0.4) lib/rack/conditional_get.rb:38:in `call'
+rack (2.0.4) lib/rack/head.rb:12:in `call'
+rack (2.0.4) lib/rack/session/abstract/id.rb:232:in `context'
+rack (2.0.4) lib/rack/session/abstract/id.rb:226:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/cookies.rb:613:in `call'
+activerecord (5.1.6) lib/active_record/migration.rb:556:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
+activesupport (5.1.6) lib/active_support/callbacks.rb:97:in `run_callbacks'
+actionpack (5.1.6) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
+web-console (3.6.0) lib/web_console/middleware.rb:137:in `call_app'
+web-console (3.6.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.6.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.6.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.6) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.6) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.6) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.4) lib/rack/method_override.rb:22:in `call'
+rack (2.0.4) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.6) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.4) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.6) lib/rails/engine.rb:522:in `call'
+puma (3.11.4) lib/puma/configuration.rb:225:in `call'
+puma (3.11.4) lib/puma/server.rb:632:in `handle_request'
+puma (3.11.4) lib/puma/server.rb:446:in `process_client'
+puma (3.11.4) lib/puma/server.rb:306:in `block in run'
+puma (3.11.4) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started POST "/admin/users" for 127.0.0.1 at 2018-04-17 11:35:56 +0300
+Processing by Admin::UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"wWqvLcHmcpHEP7ljH859Hg8lffeWyrYJKMzW4engerfhZblRBdxiho0MgU1xYwp9dAGYq7wJ2ZofQRWDlT6mXg==", "user"=>{"first_name"=>"First", "last_name"=>"Second", "role"=>"thrith"}, "commit"=>"Create User"}
+  [1m[36mAdminUser Load (1.0ms)[0m  [1m[34mSELECT  "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = ? ORDER BY "admin_users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+Completed 500 Internal Server Error in 54ms (ActiveRecord: 3.8ms)
+
+
+  
+NoMethodError (undefined method `email' for #<User:0x00007fcd3c03e920>):
+  
+activemodel (5.1.6) lib/active_model/attribute_methods.rb:432:in `method_missing'
+activemodel (5.1.6) lib/active_model/validator.rb:148:in `block in validate'
+activemodel (5.1.6) lib/active_model/validator.rb:147:in `each'
+activemodel (5.1.6) lib/active_model/validator.rb:147:in `validate'
+activesupport (5.1.6) lib/active_support/callbacks.rb:413:in `block in make_lambda'
+activesupport (5.1.6) lib/active_support/callbacks.rb:178:in `block (2 levels) in halting_and_conditional'
+activesupport (5.1.6) lib/active_support/callbacks.rb:601:in `block (2 levels) in default_terminator'
+activesupport (5.1.6) lib/active_support/callbacks.rb:600:in `catch'
+activesupport (5.1.6) lib/active_support/callbacks.rb:600:in `block in default_terminator'
+activesupport (5.1.6) lib/active_support/callbacks.rb:179:in `block in halting_and_conditional'
+activesupport (5.1.6) lib/active_support/callbacks.rb:507:in `block in invoke_before'
+activesupport (5.1.6) lib/active_support/callbacks.rb:507:in `each'
+activesupport (5.1.6) lib/active_support/callbacks.rb:507:in `invoke_before'
+activesupport (5.1.6) lib/active_support/callbacks.rb:130:in `run_callbacks'
+activesupport (5.1.6) lib/active_support/callbacks.rb:827:in `_run_validate_callbacks'
+activemodel (5.1.6) lib/active_model/validations.rb:405:in `run_validations!'
+activemodel (5.1.6) lib/active_model/validations/callbacks.rb:114:in `block in run_validations!'
+activesupport (5.1.6) lib/active_support/callbacks.rb:131:in `run_callbacks'
+activesupport (5.1.6) lib/active_support/callbacks.rb:827:in `_run_validation_callbacks'
+activemodel (5.1.6) lib/active_model/validations/callbacks.rb:114:in `run_validations!'
+activemodel (5.1.6) lib/active_model/validations.rb:335:in `valid?'
+activerecord (5.1.6) lib/active_record/validations.rb:65:in `valid?'
+activerecord (5.1.6) lib/active_record/validations.rb:82:in `perform_validations'
+activerecord (5.1.6) lib/active_record/validations.rb:44:in `save'
+activerecord (5.1.6) lib/active_record/attribute_methods/dirty.rb:35:in `save'
+activerecord (5.1.6) lib/active_record/transactions.rb:308:in `block (2 levels) in save'
+activerecord (5.1.6) lib/active_record/transactions.rb:384:in `block in with_transaction_returning_status'
+activerecord (5.1.6) lib/active_record/connection_adapters/abstract/database_statements.rb:235:in `block in transaction'
+activerecord (5.1.6) lib/active_record/connection_adapters/abstract/transaction.rb:194:in `block in within_new_transaction'
+/home/reacher/.rbenv/versions/2.5.0/lib/ruby/2.5.0/monitor.rb:226:in `mon_synchronize'
+activerecord (5.1.6) lib/active_record/connection_adapters/abstract/transaction.rb:191:in `within_new_transaction'
+activerecord (5.1.6) lib/active_record/connection_adapters/abstract/database_statements.rb:235:in `transaction'
+activerecord (5.1.6) lib/active_record/transactions.rb:210:in `transaction'
+activerecord (5.1.6) lib/active_record/transactions.rb:381:in `with_transaction_returning_status'
+activerecord (5.1.6) lib/active_record/transactions.rb:308:in `block in save'
+activerecord (5.1.6) lib/active_record/transactions.rb:323:in `rollback_active_record_state!'
+activerecord (5.1.6) lib/active_record/transactions.rb:307:in `save'
+activerecord (5.1.6) lib/active_record/suppressor.rb:42:in `save'
+activeadmin (1.2.1) lib/active_admin/resource_controller/data_access.rb:155:in `block in save_resource'
+activesupport (5.1.6) lib/active_support/core_ext/object/try.rb:17:in `public_send'
+activesupport (5.1.6) lib/active_support/core_ext/object/try.rb:17:in `try!'
+activesupport (5.1.6) lib/active_support/core_ext/object/try.rb:6:in `try'
+activeadmin (1.2.1) lib/active_admin/callbacks.rb:79:in `block (2 levels) in define_active_admin_callbacks'
+activeadmin (1.2.1) lib/active_admin/resource_controller/data_access.rb:154:in `save_resource'
+activeadmin (1.2.1) lib/active_admin/resource_controller/data_access.rb:144:in `block in create_resource'
+activesupport (5.1.6) lib/active_support/core_ext/object/try.rb:17:in `public_send'
+activesupport (5.1.6) lib/active_support/core_ext/object/try.rb:17:in `try!'
+activesupport (5.1.6) lib/active_support/core_ext/object/try.rb:6:in `try'
+activeadmin (1.2.1) lib/active_admin/callbacks.rb:79:in `block (2 levels) in define_active_admin_callbacks'
+activeadmin (1.2.1) lib/active_admin/resource_controller/data_access.rb:143:in `create_resource'
+inherited_resources (1.8.0) lib/inherited_resources/actions.rb:33:in `create'
+actionpack (5.1.6) lib/action_controller/metal/basic_implicit_render.rb:4:in `send_action'
+actionpack (5.1.6) lib/abstract_controller/base.rb:186:in `process_action'
+actionpack (5.1.6) lib/action_controller/metal/rendering.rb:30:in `process_action'
+actionpack (5.1.6) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
+activesupport (5.1.6) lib/active_support/callbacks.rb:131:in `run_callbacks'
+actionpack (5.1.6) lib/abstract_controller/callbacks.rb:19:in `process_action'
+actionpack (5.1.6) lib/action_controller/metal/rescue.rb:20:in `process_action'
+actionpack (5.1.6) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+activesupport (5.1.6) lib/active_support/notifications.rb:166:in `block in instrument'
+activesupport (5.1.6) lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+activesupport (5.1.6) lib/active_support/notifications.rb:166:in `instrument'
+actionpack (5.1.6) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+actionpack (5.1.6) lib/action_controller/metal/params_wrapper.rb:252:in `process_action'
+activerecord (5.1.6) lib/active_record/railties/controller_runtime.rb:22:in `process_action'
+actionpack (5.1.6) lib/abstract_controller/base.rb:124:in `process'
+actionview (5.1.6) lib/action_view/rendering.rb:30:in `process'
+actionpack (5.1.6) lib/action_controller/metal.rb:189:in `dispatch'
+actionpack (5.1.6) lib/action_controller/metal.rb:253:in `dispatch'
+actionpack (5.1.6) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (5.1.6) lib/action_dispatch/routing/route_set.rb:31:in `serve'
+actionpack (5.1.6) lib/action_dispatch/journey/router.rb:50:in `block in serve'
+actionpack (5.1.6) lib/action_dispatch/journey/router.rb:33:in `each'
+actionpack (5.1.6) lib/action_dispatch/journey/router.rb:33:in `serve'
+actionpack (5.1.6) lib/action_dispatch/routing/route_set.rb:844:in `call'
+warden (1.2.7) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.7) lib/warden/manager.rb:35:in `catch'
+warden (1.2.7) lib/warden/manager.rb:35:in `call'
+rack (2.0.4) lib/rack/etag.rb:25:in `call'
+rack (2.0.4) lib/rack/conditional_get.rb:38:in `call'
+rack (2.0.4) lib/rack/head.rb:12:in `call'
+rack (2.0.4) lib/rack/session/abstract/id.rb:232:in `context'
+rack (2.0.4) lib/rack/session/abstract/id.rb:226:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/cookies.rb:613:in `call'
+activerecord (5.1.6) lib/active_record/migration.rb:556:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
+activesupport (5.1.6) lib/active_support/callbacks.rb:97:in `run_callbacks'
+actionpack (5.1.6) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
+web-console (3.6.0) lib/web_console/middleware.rb:137:in `call_app'
+web-console (3.6.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.6.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.6.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.6) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.6) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.6) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.4) lib/rack/method_override.rb:22:in `call'
+rack (2.0.4) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.6) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.4) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.6) lib/rails/engine.rb:522:in `call'
+puma (3.11.4) lib/puma/configuration.rb:225:in `call'
+puma (3.11.4) lib/puma/server.rb:632:in `handle_request'
+puma (3.11.4) lib/puma/server.rb:446:in `process_client'
+puma (3.11.4) lib/puma/server.rb:306:in `block in run'
+puma (3.11.4) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/admin/users/new" for 127.0.0.1 at 2018-04-17 11:36:51 +0300
+Processing by Admin::UsersController#new as HTML
+  [1m[36mAdminUser Load (0.4ms)[0m  [1m[34mSELECT  "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = ? ORDER BY "admin_users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering /home/reacher/.rbenv/versions/2.5.0/lib/ruby/gems/2.5.0/gems/activeadmin-1.2.1/app/views/active_admin/resource/new.html.arb
+Started POST "/admin/users" for 127.0.0.1 at 2018-04-17 11:36:54 +0300
+  Rendered /home/reacher/.rbenv/versions/2.5.0/lib/ruby/gems/2.5.0/gems/activeadmin-1.2.1/app/views/active_admin/resource/new.html.arb (3242.0ms)
+Completed 200 OK in 3275ms (Views: 3245.4ms | ActiveRecord: 2.2ms)
+
+
+Processing by Admin::UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"wWqvLcHmcpHEP7ljH859Hg8lffeWyrYJKMzW4engerfhZblRBdxiho0MgU1xYwp9dAGYq7wJ2ZofQRWDlT6mXg==", "user"=>{"first_name"=>"First", "last_name"=>"Second", "role"=>"thrith"}, "commit"=>"Create User"}
+  [1m[36mAdminUser Load (0.2ms)[0m  [1m[34mSELECT  "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = ? ORDER BY "admin_users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "role") VALUES (?, ?, ?)[0m  [["first_name", "First"], ["last_name", "Second"], ["role", "thrith"]]
+  [1m[35m (136.3ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/admin/users/1
+Completed 302 Found in 191ms (ActiveRecord: 138.8ms)
+
+
+Started GET "/admin/users/1" for 127.0.0.1 at 2018-04-17 11:36:55 +0300
+Processing by Admin::UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mAdminUser Load (0.4ms)[0m  [1m[34mSELECT  "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = ? ORDER BY "admin_users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering /home/reacher/.rbenv/versions/2.5.0/lib/ruby/gems/2.5.0/gems/activeadmin-1.2.1/app/views/active_admin/resource/show.html.arb
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "active_admin_comments" WHERE "active_admin_comments"."resource_type" = ? AND "active_admin_comments"."resource_id" = 1 AND "active_admin_comments"."namespace" = ?[0m  [["resource_type", "User"], ["namespace", "admin"]]
+  [1m[36mActiveAdmin::Comment Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "active_admin_comments" WHERE "active_admin_comments"."resource_type" = ? AND "active_admin_comments"."resource_id" = 1 AND "active_admin_comments"."namespace" = ? LIMIT ? OFFSET ?[0m  [["resource_type", "User"], ["namespace", "admin"], ["LIMIT", 1], ["OFFSET", 0]]
+  Rendered /home/reacher/.rbenv/versions/2.5.0/lib/ruby/gems/2.5.0/gems/activeadmin-1.2.1/app/views/active_admin/resource/show.html.arb (280.3ms)
+Completed 200 OK in 313ms (Views: 294.0ms | ActiveRecord: 2.4ms)
+
+
+Started POST "/admin/comments" for 127.0.0.1 at 2018-04-17 11:37:04 +0300
+Processing by Admin::CommentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"66daqKDoeyU61m6rPFqw0y6c2TUDCb6qViitQhgEnZLLqEzUZNJrMnPlVoVS98ewVbg8aSnK0TlhpW4gZNpBew==", "active_admin_comment"=>{"resource_type"=>"User", "resource_id"=>"1", "body"=>"jjhhj"}, "commit"=>"Add Comment"}
+  [1m[36mAdminUser Load (0.4ms)[0m  [1m[34mSELECT  "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = ? ORDER BY "admin_users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (1.3ms)[0m  [1m[32mINSERT INTO "active_admin_comments" ("namespace", "body", "resource_type", "resource_id", "author_type", "author_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["namespace", "admin"], ["body", "jjhhj"], ["resource_type", "User"], ["resource_id", 1], ["author_type", "AdminUser"], ["author_id", 1], ["created_at", "2018-04-17 08:37:04.739963"], ["updated_at", "2018-04-17 08:37:04.739963"]]
+  [1m[35m (122.3ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/admin/users/1
+Completed 302 Found in 207ms (ActiveRecord: 124.3ms)
+
+
+Started GET "/admin/users/1" for 127.0.0.1 at 2018-04-17 11:37:04 +0300
+Processing by Admin::UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mAdminUser Load (0.5ms)[0m  [1m[34mSELECT  "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = ? ORDER BY "admin_users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering /home/reacher/.rbenv/versions/2.5.0/lib/ruby/gems/2.5.0/gems/activeadmin-1.2.1/app/views/active_admin/resource/show.html.arb
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "active_admin_comments" WHERE "active_admin_comments"."resource_type" = ? AND "active_admin_comments"."resource_id" = 1 AND "active_admin_comments"."namespace" = ?[0m  [["resource_type", "User"], ["namespace", "admin"]]
+  [1m[36mActiveAdmin::Comment Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "active_admin_comments" WHERE "active_admin_comments"."resource_type" = ? AND "active_admin_comments"."resource_id" = 1 AND "active_admin_comments"."namespace" = ? LIMIT ? OFFSET ?[0m  [["resource_type", "User"], ["namespace", "admin"], ["LIMIT", 1], ["OFFSET", 0]]
+  [1m[36mActiveAdmin::Comment Load (0.3ms)[0m  [1m[34mSELECT  "active_admin_comments".* FROM "active_admin_comments" WHERE "active_admin_comments"."resource_type" = ? AND "active_admin_comments"."resource_id" = 1 AND "active_admin_comments"."namespace" = ? ORDER BY created_at ASC LIMIT ? OFFSET ?[0m  [["resource_type", "User"], ["namespace", "admin"], ["LIMIT", 25], ["OFFSET", 0]]
+  [1m[36mAdminUser Load (0.3ms)[0m  [1m[34mSELECT "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = 1[0m
+  Rendered /home/reacher/.rbenv/versions/2.5.0/lib/ruby/gems/2.5.0/gems/activeadmin-1.2.1/app/views/active_admin/resource/show.html.arb (166.4ms)
+Completed 200 OK in 176ms (Views: 169.8ms | ActiveRecord: 1.9ms)
+
+
